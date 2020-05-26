@@ -32,6 +32,7 @@ func_install(){
 
 list=(
 yay
+lightdm-webkit-theme-aether
 google-chrome
 pamac-aur
 visual-studio-code-bin

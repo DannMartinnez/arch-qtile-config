@@ -1,5 +1,8 @@
 #!/bin/bash
 #set -e
+
+#Daniel Martinez
+
 ###############################################################################
 ###############################################################################
 #
@@ -57,8 +60,6 @@ xorg-server
 xorg-apps
 xterm
 lightdm
-lightdm-gtk-greeter
-lightdm-gtk-greeter-settings
 qtile
 arandr
 python-psutil
@@ -213,7 +214,7 @@ fi
 
 tput setaf 10;
 echo "################################################################"
-echo "The installation has finished, for more information you can review the .log files that have been generated in this directory. It is recommended to Reboot your system"
+echo "The installation has finished, for more information you can review the .log files that have been generated in this directory."
 echo "################################################################"
 echo;tput sgr0
 
