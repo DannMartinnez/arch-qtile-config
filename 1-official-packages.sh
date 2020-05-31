@@ -135,6 +135,7 @@ vifm
 rofi
 htop
 neofetch
+okular
 #fonts
 awesome-terminal-fonts
 adobe-source-sans-pro-fonts

@@ -43,6 +43,7 @@ simplenote-electron-bin
 popcorntime
 notepadpp
 la-capitaine-icon-theme
+breeze-icons-git
 )
 
 now=`date +"%B %d %Y %H:%M"`
