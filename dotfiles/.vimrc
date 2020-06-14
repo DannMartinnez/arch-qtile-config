@@ -13,14 +13,17 @@ set path+=**			" searches current directory recursively.
 set wildmenu			" display all matches when tab complete.
 
 "----------- remap keys and bindings -----------------
+let mapleader=" "
+
 :imap ii <esc>
-:tmap ii <esc> 
+:tmap ii <esc> <c-\><c-n>
+noremap <Leader>tt :vnew term://bash<CR>
 
 nnoremap gl $
 nnoremap gh 0
 nnoremap gk h
 nnoremap gj l
-nnoremap gb g
+nnoremap gb G
 nnoremap gt gg
 nnoremap gg M
 
@@ -28,8 +31,6 @@ nnoremap gu <C-B>  		" page up
 nnoremap gm <C-F>    		" page down
 
 nnoremap fv <C-F>
-
-let mapleader=" "
 
 nmap <leader>w :w<CR>
 nmap <leader>q :q<CR>
@@ -42,13 +43,6 @@ vnoremap <C-c> "*y :let @+=@*<CR>
 " Basic file system commands
 nnoremap <A-n> :!touch<Space>
 nnoremap <A-d> :!mkdir<Space>
-
-" Guide navigation
-noremap <leader><Tab> <Esc>/<++><Enter>"_c4l
-inoremap <leader><Tab> <Esc>/<++><Enter>"_c4l
-vnoremap <leader><Tab> <Esc>/<++><Enter>"_c4l
-" general insert commands
-inoremap ñg <++>
 
 "----------- Splits --------
 
@@ -71,16 +65,10 @@ noremap <silent> <C-Up> :resize +3<CR>
 noremap <silent> <C-Down> :resize -3<CR>
 
 " ----------- tabs ---------------------
-map <C-T> : tabp<cr>
+map <C-T> :tabp<cr>
 map <C-t> :tabn<cr>
-
-noremap <Leader>tt :vnew term://bash<CR>
-tnoremap <Esc> <C-\><C-n>
-
 " ----------- Plugins ---------------------
-
 call plug#begin('~/.local/share/nvim/plugged')
-
 "Basics
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'suan/vim-instant-markdown', {'rtp': 'after'} " Markdown Preview
@@ -94,7 +82,6 @@ Plug 'easymotion/vim-easymotion'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'airblade/vim-gitgutter'
 " File Manage 
-Plug 'vifm/vifm.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'     " Highlighting Nerdtree
 Plug 'ryanoasis/vim-devicons'                      " Icons for Nerdtree
@@ -110,7 +97,6 @@ Plug 'alvan/vim-closetag'
 call plug#end()
 
 " ----------- Plugin configs ---------------------
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  Vim-Instant-Markdown
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -120,20 +106,11 @@ let g:instant_markdown_browser = "surf"      " Uses surf for preview
 map <Leader>md :InstantMarkdownPreview<CR>   " Previews .md file
 map <Leader>ms :InstantMarkdownStop<CR>      " Kills the preview
 
-let g:ruby_host_prog = '~/.gem/ruby/2.7.0/bin/neovim-ruby-host'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"  Vim-Rainbow
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  Gruvbox
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-	colorscheme gruvbox
+colorscheme gruvbox
 let g:gruvbox_contrast_dark = "hard"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -151,15 +128,6 @@ let g:airline_theme = 'wombat'
 nmap <leader>s <Plug>(easymotion-s2)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"  Vifm
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <Leader>vv :Vifm<CR>
-map <Leader>vs :VsplitVifm<CR>
-map <Leader>sp :SplitVifm<CR>
-map <Leader>dv :DiffVifm<CR>
-map <Leader>tv :TabVifm<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  NerdTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -171,7 +139,6 @@ let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
 let NERDTreeMinimalUI = 1
 let g:NERDTreeWinSize=38
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  FZF
@@ -194,14 +161,12 @@ nnoremap <leader>g :Rg<CR>
 nnoremap <leader>t :Tags<CR>
 nnoremap <leader>m :Marks<CR>
 
-
 let g:fzf_tags_command = 'ctags -R'
 " Border color
 let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'highlight': 'Todo', 'border': 'sharp' } }
 
 let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline'
 let $FZF_DEFAULT_COMMAND="rg --files --hidden"
-
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
@@ -222,7 +187,6 @@ let g:fzf_colors =
 "Get Files
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
-
 
 " Get text in files with Rg
 command! -bang -nargs=* Rg
@@ -246,7 +210,6 @@ command! -bang -nargs=* GGrep
   \ call fzf#vim#grep(
   \   'git grep --line-number '.shellescape(<q-args>), 0,
   \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  coc.nvim
@@ -378,11 +341,11 @@ nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document
 nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-"nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
 nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+let g:ruby_host_prog = '~/.gem/ruby/2.7.0/bin/neovim-ruby-host'
