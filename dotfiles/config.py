@@ -107,7 +107,9 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
 
     # Switch window focus to other pane(s) of stack
     (["mod1"], "Tab", lazy.layout.next()),
-
+    
+    # Switch Monitor Focus 
+    ([mod], "space", lazy.next_screen()),
     # ------------ Apps Configs ------------
 
     # Menu
@@ -129,6 +131,9 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
     ([],"Print", lazy.spawn("flameshot gui")),
     ([mod], "Print", lazy.spawn("flameshot full -p /home/dann/Pictures/Captures")),
     ([mod, "shift"], "Print", lazy.spawn("flameshot full -c")),
+
+    # Simplenote
+    ([mod], "n", lazy.spawn("simplenote")),
 
     # ------------ Hardware Configs ------------
 

@@ -136,6 +136,9 @@ rofi
 htop
 neofetch
 okular
+numlockx
+xclip
+xf86-input-synaptics
 #fonts
 awesome-terminal-fonts
 adobe-source-sans-pro-fonts

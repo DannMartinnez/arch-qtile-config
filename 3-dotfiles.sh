@@ -7,6 +7,7 @@ cp -rf autostart.sh config.py themes/ ~/.config/qtile
 cp -rf Pictures/ ~/
 mkdir -p ~/.config/nvim
 cp -f init.vim ~/.config/nvim
+cp -f .vimrc ~/
 mkdir -p ~/.config/alacritty
 cp -rf alacritty.yml theme.py themes/ ~/.config/alacritty
 mkdir -p ~/.config/rofi
@@ -17,4 +18,4 @@ cp -f .bashrc ~/
 sudo cp avatar.jpg /var/lib/AccountsService/icons
 # have in count dann in the next line is the username.
 sudo echo Icon=/var/lib/AccountsService/icons/avatar.jpg >> /var/lib/AccountsService/users/dann 
-
+sudo cp -f cp 50-synaptics.conf /etc/X11/xorg.conf.d
