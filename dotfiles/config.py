@@ -29,7 +29,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-
 from libqtile.config import Key, Screen, Group, Drag, Click
 from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
@@ -39,9 +38,7 @@ from os import path
 import subprocess
 import json
 
-
 qtile_path = path.join(path.expanduser("~"), ".config", "qtile")
-
 
 # THEME
 
@@ -87,7 +84,7 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
     ([mod], "q", lazy.layout.grow()),
     ([mod], "a", lazy.layout.shrink()),
 
-    # Move windows up or down in current stack 
+    #  ove windows up or down in current stack 
     ([mod, "shift"], "j", lazy.layout.shuffle_down()),
     ([mod, "shift"], "k", lazy.layout.shuffle_up()),
     ([mod, "shift"], "h", lazy.layout.shuffle_left()),
@@ -110,6 +107,10 @@ keys = [Key(key[0], key[1], *key[2:]) for key in [
     
     # Switch Monitor Focus 
     ([mod], "space", lazy.next_screen()),
+
+    # Switch keymap
+    ([mod, "control"], "k", lazy.spawn("setxkbmap us")),
+    ([mod, "control"], "i", lazy.spawn("setxkbmap es")),
     # ------------ Apps Configs ------------
 
     # Menu
@@ -260,6 +261,12 @@ clock = {
 ThermalSensor={
 }
 
+KeyboardLayout={
+        'fmt': '⌨{}',
+        'fontsize' : 15,
+        'configured_keyboards': ['us','es'] 
+}
+
 CPU={
 }
 
@@ -279,6 +286,10 @@ def workspaces():
 
 def powerline_base():
     return [
+        widget.KeyboardLayout(
+            **base(bg='secondary'),
+            **KeyboardLayout
+        ),
         widget.CurrentLayoutIcon(
             **base(bg='secondary'),
             **current_layout_icon
