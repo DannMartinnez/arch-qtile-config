@@ -139,6 +139,7 @@ okular
 numlockx
 xclip
 xf86-input-synaptics
+ntfs-ntfs-3g 			#if this package is not installed add the [extra] repo
 #fonts
 awesome-terminal-fonts
 adobe-source-sans-pro-fonts
