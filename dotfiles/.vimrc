@@ -27,6 +27,8 @@ nnoremap gb G
 nnoremap gt gg
 nnoremap gg M
 
+nnoremap <leader>y %
+
 nnoremap gu <C-B>  		" page up
 nnoremap gm <C-F>    		" page down
 
@@ -65,8 +67,8 @@ noremap <silent> <C-Up> :resize +3<CR>
 noremap <silent> <C-Down> :resize -3<CR>
 
 " ----------- tabs ---------------------
-map <C-T> :tabp<cr>
-map <C-t> :tabn<cr>
+map <leader><leader>l :tabp<cr>
+map <leader><leader>h :tabn<cr>
 " ----------- Plugins ---------------------
 call plug#begin('~/.local/share/nvim/plugged')
 "Basics
@@ -93,7 +95,7 @@ Plug 'airblade/vim-rooter'
 Plug 'ap/vim-css-color'  			    " Color previews for CSS
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-surround'
-Plug 'alvan/vim-closetag'
+Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 call plug#end()
 
 " ----------- Plugin configs ---------------------
@@ -210,6 +212,13 @@ command! -bang -nargs=* GGrep
   \ call fzf#vim#grep(
   \   'git grep --line-number '.shellescape(<q-args>), 0,
   \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"  emmet
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:user_emmet_leader_key=','
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  coc.nvim
