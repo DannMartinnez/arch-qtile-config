@@ -21,8 +21,8 @@ noremap <Leader>tt :vnew term://bash<CR>
 
 nnoremap gl $
 nnoremap gh 0
-nnoremap gk h
-nnoremap gj l
+nnoremap gk H
+nnoremap gj L
 nnoremap gb G
 nnoremap gt gg
 nnoremap gg M
@@ -31,8 +31,6 @@ nnoremap <leader>y %
 
 nnoremap gu <C-B>  		" page up
 nnoremap gm <C-F>    		" page down
-
-nnoremap fv <C-F>
 
 nmap <leader>w :w<CR>
 nmap <leader>q :q<CR>
@@ -67,8 +65,13 @@ noremap <silent> <C-Up> :resize +3<CR>
 noremap <silent> <C-Down> :resize -3<CR>
 
 " ----------- tabs ---------------------
-map <leader><leader>l :tabp<cr>
-map <leader><leader>h :tabn<cr>
+map <leader><leader>h :tabp<cr>
+map <leader><leader>l :tabn<cr>
+"
+syntax enable
+colorscheme molokai
+"let g:molokai_original = 1
+let g:rehash256 = 1
 " ----------- Plugins ---------------------
 call plug#begin('~/.local/share/nvim/plugged')
 "Basics
@@ -83,6 +86,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'easymotion/vim-easymotion'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'airblade/vim-gitgutter'
+Plug 'xolox/vim-session'
+Plug 'xolox/vim-misc'
 " File Manage 
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'     " Highlighting Nerdtree
@@ -95,7 +100,6 @@ Plug 'airblade/vim-rooter'
 Plug 'ap/vim-css-color'  			    " Color previews for CSS
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-surround'
-Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 call plug#end()
 
 " ----------- Plugin configs ---------------------
@@ -112,8 +116,8 @@ map <Leader>ms :InstantMarkdownStop<CR>      " Kills the preview
 "  Gruvbox
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-colorscheme gruvbox
-let g:gruvbox_contrast_dark = "hard"
+"colorscheme gruvbox
+"let g:gruvbox_contrast_dark = "hard"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  Vim-airline
@@ -128,6 +132,17 @@ let g:airline_theme = 'wombat'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 nmap <leader>s <Plug>(easymotion-s2)
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"  Vim-Sessions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:session_directory = "~/.vim/session"
+let g:session_autoload = 'yes'
+let g:session_autosave = 'yes'
+nnoremap <leader>so :OpenSession 
+nnoremap <leader>ss :SaveSession 
+nnoremap <leader>sd :DeleteSession<CR>
+nnoremap <leader>sc :CloseSession<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  NerdTree

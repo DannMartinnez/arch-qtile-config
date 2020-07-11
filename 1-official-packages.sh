@@ -124,6 +124,7 @@ cabextract
 #system
 lxappearance
 man
+man-pages
 udisks2
 udiskie
 xfce4-notifyd

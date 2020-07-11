@@ -19,3 +19,6 @@ sudo cp avatar.jpg /var/lib/AccountsService/icons
 # have in count dann in the next line is the username.
 sudo echo Icon=/var/lib/AccountsService/icons/avatar.jpg >> /var/lib/AccountsService/users/dann 
 sudo cp -f cp 50-synaptics.conf /etc/X11/xorg.conf.d
+mkdir -p ~/.vim/session
+mkdir -p ~/.vim/colors
+cp -f molokai.vim ~/.vim/colors

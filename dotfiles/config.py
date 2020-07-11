@@ -57,14 +57,16 @@ img_path = path.join(theme_path, "img")
 for i in listdir(img_path):
     img[i.split(".")[0]] = path.join(img_path, i)
 
-
 # AUTOSTART
 
 @hook.subscribe.startup_once
 def autostart():
     script = path.join(qtile_path, "autostart.sh")
     subprocess.call([script])
-
+   # monitors_stats = subprocess.run("xrandr | grep 'connected' | cut -d ' ' -f 2", shell=True, stdout=subprocess.PIPE).stdout.decode("UTF-8").split("\n")[:-1]
+   # if monitors_stats.count("connected") == 2:
+     #   dual = path.join(qtile_path, "dualmonitor.sh")
+     #   subprocess.call([dual])
 
 # KEYS
 
@@ -371,6 +373,11 @@ monitors_status = subprocess.run(
 ).stdout.decode("UTF-8").split("\n")[:-1]
 
 if monitors_status.count("connected") == 2:
+#    dualmonitor = path.join(qtile_path, "dualmonitor.sh")
+#    subprocess.call([dualmonitor])
+    #lazy.spawn("xrandr --output HDMI-1 --primary --left-of LVDS-1 --output HDMI-1 --mode 1920x1080i --output LVDS-1 --mode 1280x720 --rotate left")
+   # subprocess.run('xrandr " --output HDMI-1 --primary --left-of LVDS-1 --output HDMI-1 --mode 1920x1080i --output LVDS-1 --mode 1280x720 --rotate left"')
+  #  lazy.restart()
     screens.append(
         Screen(top=bar.Bar(monitor_widgets, 24, opacity=0.95))
     )
